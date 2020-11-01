@@ -2,7 +2,7 @@
 
 ## Supports Environment
 
-|項目|設定値|
+|||
 |--|---------|
 |OS|Windows10|
 |VSCode|1.50.1|
