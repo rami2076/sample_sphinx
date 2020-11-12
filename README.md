@@ -11,8 +11,6 @@
 |pip|20.2.3|
 |Sphinx|3.2.1|
 
-
-
 ## 手順
 好きなターミナルを開きます。  
 開くときは、権利者権限モードで開いてください。
@@ -113,4 +111,133 @@
      make builder
   where "builder" is one of the supported builders, e.g.   html, latex or linkcheck.
   ```
+
+ディレクトリの中身の状態を確認する。
+```
+cmd //c tree //f
+```
+
+下記のように出力される。
+```
+$  cmd //c tree //f
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は 3A86-E7F1 です
+C:.
+│  make.bat
+│  Makefile
+│  README.md
+│
+├─build
+├─source
+│  │  conf.py
+│  │  index.rst
+│  │
+│  ├─_static
+│  └─_templates
+└─test_document
+```
+
+
+
+
+HTMLの作成コマンド
+```
+./make.bat html
+```
+
+HTML作成実施時
+```
+$ ./make.bat html
+Running Sphinx v3.2.1
+loading translations [ja]... done
+making output directory... done
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 1 source files that are out of date
+updating environment: [new config] 1 added, 0 changed, 0 removed
+reading sources... [100%] index
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [100%] index
+generating indices...  genindexdone
+writing additional pages...  searchdone
+copying static files... ... done
+copying extra files... done
+dumping search index in Japanese (code: ja)... done
+dumping object inventory... done
+build succeeded.
+
+The HTML pages are in build\html.
+```
+
+再度中身を確認する。
+```
+$ cmd //c tree //f
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は 3A86-E7F1 です
+C:.
+│  make.bat
+│  Makefile
+│  README.md
+│
+├─build
+│  ├─doctrees
+│  │      environment.pickle
+│  │      index.doctree
+│  │
+│  └─html
+│      │  .buildinfo
+│      │  genindex.html
+│      │  index.htstart .ml
+│      │  objects.inv
+│      │  search.html
+│      │  searchindex.js
+│      │
+│      ├─_sources
+│      │      index.rst.txt
+│      │
+│      └─_static
+│              alabaster.css
+│              basic.css
+│              custom.css
+│              doctools.js
+│              documentation_options.js
+│              file.png
+│              jquery-3.5.1.js
+│              jquery.js
+│              language_data.js
+│              minus.png
+│              plus.png
+│              pygments.css
+│              searchtools.js
+│              translations.js
+│              underscore-1.3.1.js
+│              underscore.js
+│
+├─source
+│  │  conf.py
+│  │  index.rst
+│  │
+│  ├─_static
+│  └─_templates
+└─test_document
+```
+
+HTMLが生成されるのでブラウザで確認する。
+```
+build\html\index.html
+```
+
+デザインテーマの追加
+```
+pip install cloud-sptheme
+```
+
+設定ファイルの値の変更
+```
+# conf.py
+html_//theme = 'cloud'
+```
+
 
